@@ -1,0 +1,275 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:#0a0f1a;
+font-family:'Cinzel',serif;
+color:white;
+text-align:center;
+
+}
+
+.main-container{
+
+width:85%;
+max-width:1200px;
+margin:auto;
+padding-top:50px;
+
+}
+
+.title{
+
+font-size:64px;
+
+color:#e5c17b;
+
+text-shadow:
+0 0 15px gold,
+0 0 35px rgba(255,215,120,0.4);
+
+margin-bottom:40px;
+
+}
+
+.title span{
+
+font-size:54px;
+
+}
+
+.poster-frame{
+
+border:4px solid #9c8654;
+
+padding:10px;
+
+background:#121722;
+
+box-shadow:
+0 0 30px black,
+0 0 60px rgba(0,0,0,0.8);
+
+display:inline-block;
+
+}
+
+.poster-frame img{
+
+width:100%;
+max-width:900px;
+
+border:3px solid #cdb57e;
+
+}
+
+.language-menu{
+
+margin-top:40px;
+
+}
+
+.lang{
+
+padding:18px 45px;
+
+margin:10px;
+
+font-size:20px;
+
+border-radius:12px;
+
+border:2px solid #b79b5c;
+
+background:linear-gradient(#d9b874,#7b5f2b);
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.lang:hover{
+
+transform:scale(1.1);
+
+box-shadow:0 0 20px gold;
+
+}
+
+.ads-section{
+
+margin-top:60px;
+
+}
+
+.ads-title{
+
+margin-bottom:15px;
+
+color:#a9b3c5;
+
+font-size:22px;
+
+}
+
+.ads-box{
+
+padding:25px;
+
+background:#131a28;
+
+border:2px solid #3e465a;
+
+color:#bbb;
+
+}
+
+@media(max-width:768px){
+
+.title{
+
+font-size:42px;
+
+}
+
+.lang{
+
+width:90%;
+
+margin-top:15px;
+
+}
+
+}body{
+background:#0b0b0b;
+color:white;
+font-family:'Cinzel',serif;
+margin:0;
+text-align:center;
+}
+
+.storm{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#1a1a1a,#000);
+z-index:-1;
+}
+
+.main-container{
+padding:40px;
+}
+
+.title{
+font-size:45px;
+letter-spacing:3px;
+}
+
+.title span{
+color:#d4af37;
+}
+
+.chapters{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.chapter-card{
+background:#111;
+padding:15px;
+border-radius:10px;
+width:200px;
+transition:0.3s;
+}
+
+.chapter-card img{
+width:100%;
+border-radius:5px;
+}
+
+.chapter-card:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px gold;
+}
+
+33333333333333333333333333333333
+
+<style>
+/* === METALLIC TOP-LEFT BUTTONS === */
+.top-left-buttons {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.top-left-buttons .nav-btn {
+  text-decoration: none;
+  /* Metallic White/Silver Gradient */
+  background: linear-gradient(180deg, #ffffff 0%, #d1d5db 45%, #9ba0ab 50%, #ccd1d9 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: #1a1c20; /* Dark text for contrast */
+  padding: 6px 14px;
+  border-radius: 3px; /* Sharper corners for a more "forged" look */
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* 3D Shadows */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 0px rgba(255, 255, 255, 0.5);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.top-left-buttons .nav-btn:hover {
+  /* Nagpapalit sa gold shine kapag hinover para sa "Action" feel */
+  background: linear-gradient(180deg, #fff9e6 0%, #f3e5ab 45%, #d4af37 50%, #f1d592 100%);
+  border-color: #fff;
+  color: #000;
+  transform: translateX(5px); /* Swabe na usog pakanan */
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3), 
+              0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.top-left-buttons .nav-btn:active {
+  transform: translateX(2px) translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Mobile Adjustment */
+@media (max-width: 480px) {
+  .top-left-buttons {
+    top: 15px;
+    left: 15px;
+    gap: 8px;
+  }
+  .top-left-buttons .nav-btn {
+    padding: 5px 10px;
+    font-size: 0.65rem;
+    min-width: 70px;
+  }
+}
+</style>
+.top-buttons{
+

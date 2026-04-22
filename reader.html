@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader - 15th Century Norgediantic Arc</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --dark-bg: #0a0b0e;
+            --metallic-white: linear-gradient(180deg, #ffffff 0%, #e0e4eb 45%, #9ba0ab 50%, #ccd1d9 100%);
+            --silver-shine: drop-shadow(0px 2px 2px rgba(0,0,0,0.8));
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at 50% 30%, rgba(35, 40, 50, 0.4) 0%, rgba(5, 6, 8, 0.95) 80%);
+            font-family: 'Cinzel', serif;
+            margin: 0; padding: 0; color: white;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh;
+        }
+
+        .storm {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1; background: transparent;
+            box-shadow: inset 0 0 200px rgba(0,0,0,0.9);
+            animation: lightning 12s infinite;
+        }
+
+        @keyframes lightning {
+            0%, 93%, 98%, 100% { background-color: transparent; }
+            95% { background-color: rgba(255, 255, 255, 0.05); }
+        }
+
+        .reader-header {
+            width: 100%; max-width: 800px; padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; background: rgba(10, 11, 14, 0.95);
+            backdrop-filter: blur(10px); z-index: 100;
+            border-bottom: 1px solid #2d3138;
+        }
+
+        .back-btn {
+            text-decoration: none; color: #1a1c20;
+            background: linear-gradient(180deg, #ffffff, #9ba0ab);
+            padding: 8px 18px; border-radius: 3px;
+            font-weight: 900; font-size: 0.75rem; text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+            transition: 0.3s; border: none; cursor: pointer;
+        }
+
+        .back-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+        .chapter-title {
+            background: var(--metallic-white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900; font-size: 1.1rem;
+            filter: var(--silver-shine); text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #reader {
+            width: 100%; max-width: 850px;
+            display: flex; flex-direction: column;
+            z-index: 10; padding: 10px 0 100px 0;
+        }
+
+        #reader img {
+            width: 100%; height: auto; display: block;
+            margin-bottom: 2px; /* Small gap between pages */
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .loading-text {
+            margin-top: 150px; font-size: 1.2rem;
+            background: var(--metallic-white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px; text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="storm"></div>
+
+    <header class="reader-header">
+        <a href="chapter.html" class="back-btn">← Chapters</a>
+        <div class="chapter-title" id="chapterDisplay">Reading...</div>
+        <div style="width: 80px;"></div>
+    </header>
+
+    <div id="reader">
+        <div class="loading-text" id="status">Unrolling the Scrolls...</div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const chapterNum = urlParams.get('chapter');
+        const readerDiv = document.getElementById('reader');
+        const displayTitle = document.getElementById('chapterDisplay');
+        const statusText = document.getElementById('status');
+
+        // Database ng iyong mga files para sa bawat chapter
+        const chapterData = {
+            "1": [
+        "Intro.png", "page_1.jpg", "page_2.jpg", "page_3.png", "Page_4.JPG",
+        "Page_5.JPG", "Page_6.JPG", "Page_7.JPG", "Page_8.JPG",
+        "Page_9.JPG", "Page_10.JPG", "Page_11.JPG", "Page_12.JPG",
+        "Page_13.JPG", "Page_14.png", "page_15.png", "page_16.png",
+        "page_17.png", "page_18.png", "page_19.png", "page_20.png"
+    ],
+
+    "2": [
+        "page_1.png",
+        "page_2.png",
+        "page_3.png",
+        "page_4.png",
+        "page_5.png",
+    ]
+};
+            
+        if (chapterNum && chapterData[chapterNum]) {
+            displayTitle.innerText = "Chapter " + chapterNum;
+            statusText.style.display = 'none';
+
+            const pages = chapterData[chapterNum];
+
+            pages.forEach(fileName => {
+                const img = document.createElement('img');
+                // Path: Tagalog / [1 o 2] / [FileName mula sa listahan]
+                img.src = `Tagalog/${chapterNum}/${fileName}`;
+                img.alt = fileName;
+                
+                img.onerror = function() {
+                    console.error("Failed to load: " + this.src);
+                    this.style.display = 'none';
+                };
+
+                readerDiv.appendChild(img);
+            });
+        } else {
+            statusText.innerText = "Scroll not found or empty chapter.";
+        }
+    </script>
+
